@@ -1,16 +1,20 @@
 const express = require('express')
 var createError = require('http-errors');
 var path = require('path');
+const dotenv = require('dotenv');
 
 
 var indexRouter = require('./presentation/routes/index');
 var usersRouter = require('./presentation/routes/users');
 
 const app = express()
+dotenv.config();
 
 // view engine setup
 app.set('views', path.join(__dirname, './presentation/views'));
 app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, './presentation/public')));
+
 
 
 app.use('/', indexRouter);
@@ -34,6 +38,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(3000,()=>{
-  console.log("REST API Server running");
+app.listen(process.env.PORT,()=>{
+  console.log("REST API Server running "+ process.env.PORT);
 })

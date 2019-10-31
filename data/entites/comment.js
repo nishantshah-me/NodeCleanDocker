@@ -1,5 +1,9 @@
 const logger = require("../../presentation/util/logger")
 
+function Comment(){
+    
+}
+
 module.exports = {
     one : function(){
         console.log('one function called');
