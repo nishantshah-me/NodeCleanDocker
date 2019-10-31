@@ -1,7 +1,12 @@
 const log4js = require('log4js');
+
 log4js.configure({
-  appenders: { cheese: { type: 'file', filename: 'cheese.log' } },
-  categories: { default: { appenders: ['cheese'], level: 'error' } }
+  appenders: { app: { type: 'file', filename: 'app.log' } },
+  categories: { default: { appenders: ['app'], level: 'debug' } }
 });
 
-module.exports = log4js;
+const log = function(){
+    return log4js.getLogger('app');
+};
+
+module.exports = log;
