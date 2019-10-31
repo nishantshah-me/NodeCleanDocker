@@ -1,12 +1,23 @@
 const log4js = require('log4js');
 
 log4js.configure({
-  appenders: { app: { type: 'file', filename: 'app.log' } },
-  categories: { default: { appenders: ['app'], level: 'debug' } }
+  appenders: {
+     app: { type: 'file', filename: 'app.log' },
+     database:{ type: "file", category: [ 'mongo'], filename: "database.log" }
+},
+  categories: { default: { appenders: ['app'], level: 'debug' },
+  database:{appenders: ['database'], level: 'debug'} }
 });
 
 const log = function(){
     return log4js.getLogger('app');
 };
 
-module.exports = log;
+const dblog = function(){
+  return log4js.getLogger('database');
+};
+
+module.exports = {
+  log,
+  dblog
+};

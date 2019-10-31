@@ -20,6 +20,9 @@ app.use(express.static(path.join(__dirname, './presentation/public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.get('/heartbeat',(req,res) => res.send("Everything is working fine!"));
+app.get('/log',(req,res) => res.sendFile(path.join(__dirname, 'app.log')));
+app.get('/db_log',(req,res) => res.sendFile(path.join(__dirname, 'database.log')));
+
 
 
 // catch 404 and forward to error handler
