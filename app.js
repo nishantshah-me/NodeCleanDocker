@@ -2,6 +2,8 @@ const express = require('express')
 var createError = require('http-errors');
 var path = require('path');
 const dotenv = require('dotenv');
+const logger = require('./presentation/util/logger');
+
 
 
 var indexRouter = require('./presentation/routes/index');
@@ -38,6 +40,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+  logger.log().fatal(err.message);
   res.render('error');
 });
 
