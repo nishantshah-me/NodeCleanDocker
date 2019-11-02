@@ -1,0 +1,22 @@
+version: '3.1'
+
+services: 
+      web:
+        build:
+          context: /Users/webwerks/Documents/Docker/Node-Docker-demo/Dockerfile
+          dockerfile: Dockerfile
+        image: nish9900/demo
+        ports: 
+          - 9000:3000/tcp
+        
+        
+      database:
+        image: mongo
+
+      cache:
+        image: redis
+
+
+
+
+

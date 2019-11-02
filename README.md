@@ -2,13 +2,22 @@ This is sample project to demonstrate the Dockerized clean architecture of node 
 
 ## Docker steps
 ```bash
-$docker build -t demo .
+$docker build -t nish9900/demo .
 ```
 
 ```bash
-$docker run -it -d -p 9000:3000 -v $(pwd):/app demo 
+$docker run -it -d -p 9000:3000 -v $(pwd):/app nish9900/demo 
 ```
 
+## Docker compose 
+
+```bash
+$docker-compose up -d
+```
+
+```bash
+$docker-compose down
+```
 
 ## Log
 

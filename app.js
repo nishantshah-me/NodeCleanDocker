@@ -1,6 +1,6 @@
-const express = require('express')
-var createError = require('http-errors');
-var path = require('path');
+let express = require('express')
+let createError = require('http-errors');
+let path = require('path');
 const dotenv = require('dotenv');
 const logger = require('./presentation/util/logger');
 
