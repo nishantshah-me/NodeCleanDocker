@@ -1,21 +1,33 @@
-version: '3.1'
+version: '3.3'
 
 services: 
       web:
+        container_name: app
+        restart: always
         build:
-          context: /Users/webwerks/Documents/Docker/Node-Docker-demo/Dockerfile
+          context: .
           dockerfile: Dockerfile
         image: nish9900/demo
         ports: 
-          - 9000:3000/tcp
+          - "9000:3000"
+        depends_on:
+          - database
         
         
       database:
+        container_name: mongo
         image: mongo
+        environment:
+          - MONGO_URI=mongodb://mongo:27017/demo
+        ports: 
+          - "27017:27017"
+        volumes:
+          - ./db:/data/db
+        
 
       cache:
         image: redis
-
+        
 
 
 

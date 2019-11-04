@@ -6,7 +6,7 @@ $docker build -t nish9900/demo .
 ```
 
 ```bash
-$docker run -it -d -p 9000:3000 -v $(pwd):/app nish9900/demo 
+$docker run -it -p 9000:3000 -p 27017:27017 -v $(pwd):/app nish9900/demo 
 ```
 
 ## Docker compose 

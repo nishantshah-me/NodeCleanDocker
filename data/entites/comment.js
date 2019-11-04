@@ -6,7 +6,8 @@ function Comment(){
 
 module.exports = {
     one : function(){
-        return "Message from one";
+       logger.dblog().info("What is this");
+        return "Hello users";
     },
 
     two : 20

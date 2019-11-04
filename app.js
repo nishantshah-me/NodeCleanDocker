@@ -2,6 +2,9 @@ let express = require('express')
 let createError = require('http-errors');
 let path = require('path');
 const dotenv = require('dotenv');
+var mongoose = require('mongoose');
+
+const config = require('./db');
 const logger = require('./presentation/util/logger');
 
 
@@ -25,7 +28,13 @@ app.get('/heartbeat',(req,res) => res.send("Everything is working fine!"));
 app.get('/log',(req,res) => res.sendFile(path.join(__dirname, 'app.log')));
 app.get('/db_log',(req,res) => res.sendFile(path.join(__dirname, 'database.log')));
 
-
+//Database
+const s = 'mongodb://' +  process.env.MONGO_URL + ':' + process.env.MONGO_URL + '/rideshare';
+mongoose.connect(s, {useNewUrlParser: true,useUnifiedTopology: true}).then(conn => {
+    logger.dblog().info('Mongodb connected')
+}).catch(err => {
+    logger.dblog().fatal(err.message)
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
