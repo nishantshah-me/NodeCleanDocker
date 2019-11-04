@@ -12,6 +12,9 @@ services:
           - "9000:3000"
         depends_on:
           - database
+        networks:
+          - frontend
+          - backend
         
         
       database:
@@ -23,12 +26,13 @@ services:
           - "27017:27017"
         volumes:
           - ./db:/data/db
+        networks:
+          - backend
         
 
-      cache:
-        image: redis
-        
-
-
+networks:
+  frontend:
+  backend:
+    
 
 
